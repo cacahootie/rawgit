@@ -80,9 +80,7 @@ app.route('/:user/:repo/:branch/*')
     middleware.noRobots,
     middleware.accessControl
   )
-  .get(
-    middleware.fileRedirect(config.baseRepoUrl),
-    middleware.proxyPath(config.baseRepoUrl)
+  .get(middleware.proxyPath(config.baseRepoUrl)
   );
 
 // -- Error handlers -----------------------------------------------------------
