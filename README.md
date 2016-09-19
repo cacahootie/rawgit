@@ -1,6 +1,9 @@
-# RawGit
+# rawgit-privada
+Finally, the capabilities of RawGit, plus the ability to serve files from
+private repos!  Clearly this should only be used in protected network
+environments to avoid the risk of spaffing your private files to anyone who
+knows or can guess the path.
 
-This is the source code behind <https://rawgit.com/>.
 
 ## Installing
 
