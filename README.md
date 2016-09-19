@@ -26,6 +26,11 @@ This is the source code behind <https://rawgit.com/>.
 npm test
 ```
 
+## Difference Compared to rawgit
+rawgit-privada makes two changes to rawgit.  It accepts an environment variable
+`githubtoken` for access to private repos, and it disables the 301 redirect
+functionality for non-whitelisted file types.
+
 ## Contributing
 
 Want to fix a bug? If it's something small, just send a pull request. If you
