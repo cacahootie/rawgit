@@ -30,9 +30,19 @@ npm test
 ```
 
 ## Difference Compared to rawgit
-rawgit-privada makes two changes to rawgit.  It accepts an environment variable
+rawgit-privada makes a few changes to rawgit.  It accepts an environment variable
 `githubtoken` for access to private repos, and it disables the 301 redirect
-functionality for non-whitelisted file types.
+functionality for non-whitelisted file types.  It also adds a feature when
+`NODE_ENV == 'development'` which ensures that there is no caching of github
+data; this eliminates the otherwise extant 5 minute cache time which is a tremendous
+PITA when developing.  Furthermore, the `WHITELIST` environment variable, which
+is the rawgit path to a whitelist json file, allows you to limit rawgit to providing
+responses to the master branch of the named repos.  This is intended for situations
+where the development server is on a private network, allowing access to all repos
+which the github key has access to, yet where you also want to deploy to prod using
+the same pattern, but want to restrict access only to the master branch of specified
+repos.
+
 
 ## Contributing
 

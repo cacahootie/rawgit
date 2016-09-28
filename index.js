@@ -10,12 +10,23 @@ if (process.env.RAWGIT_ENABLE_NEW_RELIC) {
 const express = require('express');
 const hbs     = require('express-handlebars');
 const path    = require('path');
+const request = require('superagent');
 
 const config     = require('./conf');
 const middleware = require('./lib/middleware');
 
 // -- Configure Express --------------------------------------------------------
+
 const app = express();
+
+if (process.env.WHITELIST) {
+  let whitelistUrl = config.baseRepoUrl + process.env.WHITELIST;
+  request.get(whitelistUrl)
+    .set('Authorization', 'token ' + process.env.githubtoken)
+    .end(function (e, d) {
+      app.set('whitelist', JSON.parse(d.text))
+    })
+}
 
 app.disable('x-powered-by');
 
